@@ -1,4 +1,5 @@
-
+#PEDRO LUCAS DE ANDRADE ARRUDA
+#17/05/2019
 
 
 # This file is executed on every boot (including wake-boot from deepsleep)
@@ -38,7 +39,7 @@ print(sta_if.ifconfig())
 
 import main as m
 
-button = machine.Pin(4, machine.Pin.IN, machine.Pin.PULL_UP)
+button = machine.Pin(4, machine.Pin.IN, machine.Pin.PULL_UP) #Button to get out of the loop
 
 
 while 1 and button.value() == 1:

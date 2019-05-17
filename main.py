@@ -1,3 +1,12 @@
+#PEDRO LUCAS DE ANDRADE ARRUDA
+#17/05/2019
+
+
+
+
+
+
+
 from thingspeak import Channel #Thingspeak stuff
 
 from thingspeak import ThingSpeakAPI, ProtoHTTPS #Thingspeak stuff
@@ -27,8 +36,8 @@ thing_speak = ThingSpeakAPI(channels, protocol_class=ProtoHTTPS, log=True)
 import dht
 import machine
 
-d_pin= dht.DHT11(machine.Pin(5))#Inialize pin D1 of nodemcu
-lum_pin = machine.ADC(0)
+d_pin= dht.DHT11(machine.Pin(5)) #Inialize pin D1 of nodemcu
+lum_pin = machine.ADC(0) #Initialize Pin A0
 
 def get_data():
   d_pin.measure()

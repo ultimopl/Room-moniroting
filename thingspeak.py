@@ -1,3 +1,10 @@
+#Original link to download this lib
+#Thanks to radeklat
+
+#https://github.com/radeklat/micropython-thingspeak
+
+
+
 try:
     import usocket as socket
     import ussl as ssl
