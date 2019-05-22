@@ -1,5 +1,5 @@
-#PEDRO LUCAS DE ANDRADE ARRUDA
-#17/05/2019
+
+
 
 
 # This file is executed on every boot (including wake-boot from deepsleep)
@@ -22,7 +22,9 @@ gc.collect()
 
 import network
 import time
-import credentials #For network information
+import credentials
+import not_main as m
+import os
 
 sta_if = network.WLAN(network.STA_IF)
 ap_if  = network.WLAN(network.AP_IF)
@@ -30,6 +32,7 @@ sta_if.active(True)
 ap_if.active(False)
 sta_if.connect(credentials.SSID,credentials.PASS)
 
+#Delay to wait moden conection
 time.sleep(5)
 
 print(sta_if.ifconfig())
@@ -37,15 +40,24 @@ print(sta_if.ifconfig())
 
 
 
-import main as m
-
-button = machine.Pin(4, machine.Pin.IN, machine.Pin.PULL_UP) #Button to get out of the loop
 
 
+#Button to break the main loop
+button = machine.Pin(4, machine.Pin.IN, machine.Pin.PULL_UP)
+
+
+
+#The main loop
 while 1 and button.value() == 1:
-  m.send_data()
-  time.sleep(120)
-
+  gc.collect()
+  result = m.send_data()
+  if result is not '0':
+    error_file = open('error.txt','a+')
+    error_file.write(result+'\n')
+    result.close()
+    time.sleep(30)
+  else:
+    time.sleep(120)
 
 
 
